@@ -111,7 +111,9 @@ body::after {
 .brand {
   font-family: var(--sans); font-weight: 600; font-size: 1rem;
   letter-spacing: .18em; color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .5rem;
 }
+.brand .icon { color: var(--gold); width: 1.15em; height: 1.15em; }
 .brand em { color: var(--gold); font-style: normal; }
 .nav-links { display: flex; gap: clamp(1rem, 3vw, 2.4rem); }
 .nav-links a {
@@ -119,6 +121,7 @@ body::after {
   color: var(--muted); text-decoration: none; transition: color .3s;
   position: relative; padding-bottom: 4px;
 }
+.nav-en { margin-left: .3em; font-size: .78em; opacity: .6; letter-spacing: .16em; }
 .nav-links a::after {
   content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
   background: var(--gold); transition: width .35s var(--ease);
@@ -131,6 +134,7 @@ body::after {
   padding: .5rem 1.1rem; border-radius: 999px; text-decoration: none; font-weight: 600;
   box-shadow: 0 4px 20px rgba(201,162,75,.35);
   transition: transform .3s var(--ease), box-shadow .3s;
+  display: inline-flex; align-items: center; gap: .45rem;
 }
 .star-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,75,.5); }
 
@@ -193,7 +197,9 @@ body.loaded .hero-title span:nth-child(3) { transition-delay: .24s; }
   color: var(--gold-bright); border: 1px solid var(--line);
   padding: .45rem 1rem; border-radius: 999px;
   background: rgba(20,17,12,.5); backdrop-filter: blur(6px);
+  display: inline-flex; align-items: center; gap: .5rem;
 }
+.hero-chips .icon { width: .95em; height: .95em; }
 .hero-seal {
   position: absolute; right: clamp(1rem, 5vw, 4rem); bottom: clamp(4.5rem, 10vh, 6rem);
   width: clamp(84px, 10vw, 120px); z-index: 2; opacity: .85;
@@ -231,7 +237,13 @@ body.loaded .hero-title span:nth-child(3) { transition-delay: .24s; }
 .section-head { text-align: center; margin-bottom: clamp(3rem, 7vw, 5rem); position: relative; z-index: 1; }
 .kicker { font-family: var(--sans); font-size: .68rem; letter-spacing: .5em; text-indent: .5em; color: var(--gold); margin-bottom: 1rem; }
 .section-head h2 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 900; letter-spacing: .08em; }
+.h2-en {
+  display: block; margin-top: .4em;
+  font-size: .32em; font-weight: 400; font-style: italic;
+  letter-spacing: .22em; color: var(--gold-bright); opacity: .85;
+}
 .lede { margin-top: 1.2rem; color: var(--muted); font-size: clamp(.95rem, 2vw, 1.1rem); line-height: 1.9; }
+.lede .en { display: block; margin-top: .45em; font-style: italic; font-size: .85em; letter-spacing: .04em; }
 .ghost-num {
   position: absolute; top: 2rem; right: 0;
   font-family: var(--sans); font-weight: 600;
@@ -311,6 +323,7 @@ body.loaded .hero-title span:nth-child(3) { transition-delay: .24s; }
 .stat-infinity { animation: pulse-inf 2.6s ease-in-out infinite; }
 @keyframes pulse-inf { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
 .stat-label { display: block; margin-top: .6rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .3em; color: var(--muted); }
+.stat-label .en { display: block; margin-top: .35rem; font-size: .8em; letter-spacing: .2em; opacity: .7; }
 
 /* ---------- 留言墙 ---------- */
 .quotes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; position: relative; z-index: 1; }
@@ -322,6 +335,7 @@ body.loaded .hero-title span:nth-child(3) { transition-delay: .24s; }
 }
 .quote:hover { transform: translateX(8px); box-shadow: -10px 10px 40px rgba(0,0,0,.4); }
 .quote footer { margin-top: 1rem; font-family: var(--sans); font-style: normal; font-size: .72rem; letter-spacing: .2em; color: var(--gold); }
+.quote .q-en { display: block; margin-top: .6em; font-size: .82em; opacity: .7; }
 
 /* ---------- 应援 ---------- */
 .section--cta { text-align: center; }
@@ -331,7 +345,9 @@ body.loaded .hero-title span:nth-child(3) { transition-delay: .24s; }
   padding: 1rem 2.2rem; border-radius: 999px; text-decoration: none;
   transition: transform .35s var(--ease), box-shadow .35s, background .35s, color .35s;
   border: 1px solid transparent;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
 }
+.btn .icon { width: 1.05em; height: 1.05em; }
 .btn-gold {
   color: #14100a;
   background: linear-gradient(135deg, var(--gold), var(--gold-bright));
@@ -422,6 +438,7 @@ body.party .hero-title span:nth-child(3) { animation-delay: .4s; }
   margin-top: 1rem; font-family: var(--sans);
   font-size: .68rem; letter-spacing: .25em; color: var(--muted);
 }
+.count-line .en { display: block; margin-top: .5rem; opacity: .8; letter-spacing: .18em; }
 .community-toolbar {
   display: flex; flex-wrap: wrap; gap: 1rem;
   justify-content: space-between; align-items: center;
@@ -434,6 +451,7 @@ body.party .hero-title span:nth-child(3) { animation-delay: .4s; }
   transition: border-color .3s, box-shadow .3s;
 }
 .search-box:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,75,.15); }
+.search-box .icon { color: var(--muted); width: .95rem; height: .95rem; }
 .search-box input {
   background: none; border: none; outline: none;
   color: var(--ink); font-family: var(--sans); font-size: .8rem; letter-spacing: .05em;
@@ -474,6 +492,15 @@ body.party .hero-title span:nth-child(3) { animation-delay: .4s; }
   margin-top: 3rem; display: flex; flex-direction: column;
   align-items: center; gap: 1.8rem; position: relative; z-index: 1;
 }
+
+/* ---------- SVG 图标 · Icons ---------- */
+.icon {
+  width: 1em; height: 1em;
+  fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  vertical-align: -0.14em; flex: none;
+}
+.community-empty .icon { color: var(--gold); width: 1.2em; height: 1.2em; }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 900px) {

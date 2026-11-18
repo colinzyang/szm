@@ -9,13 +9,29 @@
   <meta property="og:title" content="SZM 美术馆 · The Museum of SZM" />
   <meta property="og:description" content="一个人，就是一座美术馆。One man. One museum." />
   <meta property="og:image" content="static/szm.png" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b0a08'/%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 42 50 17l36 25z' fill='%23c9a24b' stroke='none'/%3E%3Cpath d='M23 50v27'/%3E%3Cpath d='M41 50v27'/%3E%3Cpath d='M59 50v27'/%3E%3Cpath d='M77 50v27'/%3E%3Cpath d='M15 86h70'/%3E%3C/g%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@500;700;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="static/style.css" />
 </head>
 <body>
+
+  <!-- SVG 图标库 · Icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-museum" viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M5 18h14"/><path d="M7 18v-7"/><path d="M12 18v-7"/><path d="M17 18v-7"/><path d="M12 3 4 8h16l-8-5z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></symbol>
+    <symbol id="i-dna" viewBox="0 0 24 24"><path d="M7 2c-2 4-2 6 0 10s2 6 0 10"/><path d="M17 2c2 4 2 6 0 10s-2 6 0 10"/><path d="M8.2 6.5h7.6"/><path d="M7 12h10"/><path d="M8.2 17.5h7.6"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><path d="m8 2 4 7 4-7"/><circle cx="12" cy="16" r="5"/><path d="m12 14 .01 2 1 1"/></symbol>
+    <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 9.5 12 4 2 9.5l10 5.5 10-5.5z"/><path d="M6 12.2V17c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.8"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5a14.5 14.5 0 0 1 0 19 14.5 14.5 0 0 1 0-19z"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 2C6.9 2 2.5 6 2.5 11.5S6.9 21 12 21c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.5-.7-.5-1.1a1.6 1.6 0 0 1 1.7-1.7h2c3 0 5.1-2.5 5.1-5.5C21.5 6 17.4 2 12 2z"/><path d="M7.5 10.5h.01"/><path d="M12 7.5h.01"/><path d="M16.5 10.5h.01"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-2.9-.4-4.1-1L3 20l1-5.4A8.5 8.5 0 1 1 21 11.5z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 2a6.5 6.5 0 0 0-4 11.6c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2a6.5 6.5 0 0 0-4-11.6z"/><path d="M9.5 19h5"/><path d="M10.5 22h3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5 14.2 9l6.5 2.2-6.5 2.2L12 19.9 9.8 13.4 3.3 11.2 9.8 9 12 2.5z"/><path d="M19 15.5v5"/><path d="M16.5 18h5"/><path d="M5 2.5v4"/><path d="M3 4.5h4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/></symbol>
+  </svg>
 
   <!-- 预加载 -->
   <div id="preloader" aria-hidden="true">
@@ -32,15 +48,15 @@
 
   <!-- 导航 -->
   <nav id="nav">
-    <a class="brand" href="#top">🏛 SZM<em>·</em>MUSEUM</a>
+    <a class="brand" href="#top"><svg class="icon" aria-hidden="true"><use href="#i-museum"/></svg>SZM<em>·</em>MUSEUM</a>
     <div class="nav-links">
-      <a href="#collection">馆藏</a>
-      <a href="#community">社区馆</a>
-      <a href="#stats">数据</a>
-      <a href="#quotes">留言墙</a>
-      <a href="#fanzone">应援</a>
+      <a href="#collection">馆藏<span class="nav-en">Collection</span></a>
+      <a href="#community">社区馆<span class="nav-en">Community</span></a>
+      <a href="#stats">数据<span class="nav-en">Stats</span></a>
+      <a href="#quotes">留言墙<span class="nav-en">Voices</span></a>
+      <a href="#fanzone">应援<span class="nav-en">Fan Zone</span></a>
     </div>
-    <a class="star-btn" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener">⭐ Star</a>
+    <a class="star-btn" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Star</a>
   </nav>
 
   <!-- 英雄区 -->
@@ -51,10 +67,10 @@
       <h1 class="hero-title"><span>桑</span><span>子</span><span>铭</span></h1>
       <p class="hero-sub reveal" style="--d:.15s">一个人，就是一座美术馆。<br/><span class="en">One man. One museum. Zero rivals.</span></p>
       <div class="hero-chips reveal" style="--d:.3s">
-        <span>🧬 Bioinformatics</span>
-        <span>🏅 Team Member</span>
-        <span>🎓 XJTLU-China</span>
-        <span>🌐 社区共馆</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-dna"/></svg>生物信息 · Bioinformatics</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-medal"/></svg>团队成员 · Team Member</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-grad"/></svg>XJTLU-China</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>社区共馆 · Community</span>
       </div>
     </div>
     <div class="hero-seal" aria-hidden="true">
@@ -69,7 +85,7 @@
   <!-- 跑马灯 -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track" id="marquee-track">
-      <span>桑子铭 ✦ ZIMING SANG ✦ BIOINFORMATICS ✦ TEAM MEMBER ✦ XJTLU-CHINA ✦ 传奇在馆 ✦ THE LEGEND IS IN ✦ 欢迎鉴赏 ✦ FREE ADMISSION ✦ 🎨 社区投稿开放中 SUBMIT YOURS ✦&nbsp;</span>
+      <span>桑子铭 ✦ ZIMING SANG ✦ BIOINFORMATICS ✦ TEAM MEMBER ✦ XJTLU-CHINA ✦ 传奇在馆 ✦ THE LEGEND IS IN ✦ 欢迎鉴赏 ✦ FREE ADMISSION ✦ 社区投稿开放中 SUBMIT YOURS ✦&nbsp;</span>
     </div>
   </div>
 
@@ -79,12 +95,12 @@
       <div class="ghost-num" aria-hidden="true">01</div>
       <header class="section-head reveal">
         <p class="kicker">THE COLLECTION</p>
-        <h2>馆藏精选</h2>
-        <p class="lede">每一件都是孤品，每一帧都是历史。<br/>两件镇馆之宝，常年展出，永不外借。</p>
+        <h2>馆藏精选<span class="h2-en">Featured Collection</span></h2>
+        <p class="lede">每一件都是孤品，每一帧都是历史。<br/>两件镇馆之宝，常年展出，永不外借。<span class="en">Every piece is one of a kind. The two masterpieces are on permanent display — never on loan.</span></p>
       </header>
 
       <div class="exhibits" id="featured-grid"><!-- 镇馆之宝由 gallery-data.js 动态渲染 --></div>
-      <p class="hint reveal">💡 点击作品 · 进入全屏鉴赏模式</p>
+      <p class="hint reveal"><svg class="icon" aria-hidden="true"><use href="#i-bulb"/></svg> 点击作品 · 进入全屏鉴赏模式 · Click a piece for full-screen viewing</p>
     </section>
 
     <!-- 社区馆藏 -->
@@ -92,31 +108,31 @@
       <div class="ghost-num" aria-hidden="true">02</div>
       <header class="section-head reveal">
         <p class="kicker">COMMUNITY WING</p>
-        <h2>社区馆藏</h2>
-        <p class="lede">这面墙属于每一个你。<br/>投稿上墙，下一件镇馆之宝就是你的。</p>
+        <h2>社区馆藏<span class="h2-en">Community Wing</span></h2>
+        <p class="lede">这面墙属于每一个你。<br/>投稿上墙，下一件镇馆之宝就是你的。<span class="en">This wall belongs to everyone. Submit yours — the next masterpiece could be yours.</span></p>
         <p class="count-line" id="gallery-count"></p>
       </header>
 
       <div class="community-toolbar reveal">
         <label class="search-box">
-          <span aria-hidden="true">🔍</span>
-          <input type="search" id="gallery-search" placeholder="搜索作品 / 策展人 / 关键词…" aria-label="搜索馆藏" />
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input type="search" id="gallery-search" placeholder="搜索作品 / 策展人 / 关键词… Search exhibits, curators, keywords…" aria-label="搜索馆藏 Search the collection" />
         </label>
-        <div class="tag-chips" id="tag-chips" role="group" aria-label="按分类筛选"></div>
+        <div class="tag-chips" id="tag-chips" role="group" aria-label="按分类筛选 Filter by tag"></div>
       </div>
 
       <div class="community-grid" id="community-grid"><!-- 社区展品动态渲染 --></div>
 
       <div class="community-empty" id="gallery-empty" hidden>
-        <p>🔍 没找到这件孤品。</p>
-        <p>要不……<a href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener">你自己投稿一件</a>？</p>
+        <p><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> 没找到这件孤品 · No such piece found.</p>
+        <p>要不……<a href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener">你自己投稿一件</a>？ Why not submit one yourself?</p>
       </div>
 
       <div class="community-actions reveal">
-        <button class="btn btn-ghost" type="button" id="load-more" hidden>展开更多馆藏</button>
+        <button class="btn btn-ghost" type="button" id="load-more" hidden>展开更多馆藏 Load More</button>
         <div class="cta-buttons">
-          <a class="btn btn-gold" href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener">🎨 我要投稿上墙</a>
-          <a class="btn btn-ghost" href="https://github.com/colinzyang/szm#floors" target="_blank" rel="noopener">💬 去 README 论坛灌水</a>
+          <a class="btn btn-gold" href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg>我要投稿上墙 Submit Yours</a>
+          <a class="btn btn-ghost" href="https://github.com/colinzyang/szm#floors" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>README 论坛灌水 Join the Forum</a>
         </div>
       </div>
     </section>
@@ -126,14 +142,14 @@
       <div class="ghost-num" aria-hidden="true">03</div>
       <header class="section-head reveal">
         <p class="kicker">BY THE NUMBERS</p>
-        <h2>数据说话</h2>
-        <p class="lede">本馆数据实时统计自馆藏档案，随社区生长。</p>
+        <h2>数据说话<span class="h2-en">By the Numbers</span></h2>
+        <p class="lede">本馆数据实时统计自馆藏档案，随社区生长。<span class="en">Live numbers from the collection archive, growing with the community.</span></p>
       </header>
       <div class="stats-grid">
-        <div class="stat reveal"><span class="stat-num" id="stat-curators" data-count="1">0</span><span class="stat-label">位策展人</span></div>
-        <div class="stat reveal" style="--d:.1s"><span class="stat-num" id="stat-exhibits" data-count="2">0</span><span class="stat-label">件在馆馆藏</span></div>
-        <div class="stat reveal" style="--d:.2s"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">气场纯度</span></div>
-        <div class="stat reveal" style="--d:.3s"><span class="stat-num stat-infinity">∞</span><span class="stat-label">粉丝的爱</span></div>
+        <div class="stat reveal"><span class="stat-num" id="stat-curators" data-count="1">0</span><span class="stat-label">位策展人<span class="en">Curators</span></span></div>
+        <div class="stat reveal" style="--d:.1s"><span class="stat-num" id="stat-exhibits" data-count="2">0</span><span class="stat-label">件在馆馆藏<span class="en">Exhibits</span></span></div>
+        <div class="stat reveal" style="--d:.2s"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">气场纯度<span class="en">Aura Purity</span></span></div>
+        <div class="stat reveal" style="--d:.3s"><span class="stat-num stat-infinity">∞</span><span class="stat-label">粉丝的爱<span class="en">Love of the Fans</span></span></div>
       </div>
     </section>
 
@@ -142,14 +158,14 @@
       <div class="ghost-num" aria-hidden="true">04</div>
       <header class="section-head reveal">
         <p class="kicker">WALL OF FAME</p>
-        <h2>粉丝留言墙</h2>
-        <p class="lede">来自世界各地（主要是实验室和宿舍）的真实声音。</p>
+        <h2>粉丝留言墙<span class="h2-en">Wall of Fame</span></h2>
+        <p class="lede">来自世界各地（主要是实验室和宿舍）的真实声音。<span class="en">Real voices from around the world — mostly labs and dorms.</span></p>
       </header>
       <div class="quotes-grid">
-        <blockquote class="quote reveal">“他一出场，连风都停下来看他。”<footer>— 一位不愿透露姓名的室友</footer></blockquote>
-        <blockquote class="quote reveal" style="--d:.1s">“自从他来了，实验室的服务器再没宕过机。”<footer>— 生信部同事</footer></blockquote>
-        <blockquote class="quote reveal" style="--d:.2s">“见过他的人分两种：粉丝，和即将成为粉丝的人。”<footer>— 馆长</footer></blockquote>
-        <blockquote class="quote reveal" style="--d:.3s">“XJTLU 之光，Bioinformatics 之魂。”<footer>— 匿名粉丝（申明了四次）</footer></blockquote>
+        <blockquote class="quote reveal">“他一出场，连风都停下来看他。”<span class="q-en">“When he shows up, even the wind stops to watch.”</span><footer>— 一位不愿透露姓名的室友 · an anonymous roommate</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.1s">“自从他来了，实验室的服务器再没宕过机。”<span class="q-en">“Since he arrived, the lab servers have never gone down.”</span><footer>— 生信部同事 · a Bioinformatics colleague</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.2s">“见过他的人分两种：粉丝，和即将成为粉丝的人。”<span class="q-en">“People who've met him come in two kinds: fans, and future fans.”</span><footer>— 馆长 · the Curator</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.3s">“XJTLU 之光，Bioinformatics 之魂。”<span class="q-en">“The light of XJTLU, the soul of Bioinformatics.”</span><footer>— 匿名粉丝（申明了四次）· an anonymous fan (verified ×4)</footer></blockquote>
       </div>
     </section>
 
@@ -158,33 +174,33 @@
       <div class="ghost-num" aria-hidden="true">05</div>
       <header class="section-head reveal">
         <p class="kicker">JOIN THE CULT— CLUB</p>
-        <h2>爱他，就为他点一颗 Star</h2>
-        <p class="lede">本馆不收门票，只收星星。⭐</p>
+        <h2>爱他，就为他点一颗 Star<span class="h2-en">Love Him? Leave a Star.</span></h2>
+        <p class="lede">本馆不收门票，只收星星。<span class="en">No tickets here — we only collect stars.</span></p>
       </header>
       <div class="cta-buttons reveal">
-        <a class="btn btn-gold" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener" data-confetti>⭐ 去 GitHub 点 Star</a>
-        <button class="btn btn-ghost" type="button" data-confetti>🎊 替他放个烟花</button>
+        <a class="btn btn-gold" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener" data-confetti><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>去 GitHub 点 Star</a>
+        <button class="btn btn-ghost" type="button" data-confetti><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>替他放个烟花 Launch Fireworks</button>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© <span id="year">2026</span> SZM 美术馆 · The Museum of SZM · 用爱发电 ⚡</p>
-    <p class="foot-small">README 即论坛 · 楼层区见 &nbsp;·&nbsp; 提示：试试 ↑↑↓↓←→←→BA</p>
+    <p>© <span id="year">2026</span> SZM 美术馆 · The Museum of SZM · <svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg>用爱发电 Powered by love</p>
+    <p class="foot-small">README 即论坛 · 楼层区见 The README is the forum &nbsp;·&nbsp; 提示 Tip：试试 ↑↑↓↓←→←→BA</p>
   </footer>
 
   <!-- 灯箱 -->
-  <div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="全屏鉴赏">
-    <button class="lb-close" aria-label="关闭">✕</button>
-    <button class="lb-nav lb-prev" aria-label="上一件">‹</button>
-    <button class="lb-nav lb-next" aria-label="下一件">›</button>
+  <div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="全屏鉴赏 Full-screen viewing">
+    <button class="lb-close" aria-label="关闭 Close">✕</button>
+    <button class="lb-nav lb-prev" aria-label="上一件 Previous">‹</button>
+    <button class="lb-nav lb-next" aria-label="下一件 Next">›</button>
     <figure class="lb-figure">
       <img id="lb-img" src="" alt="" />
       <figcaption>
         <span class="lb-no" id="lb-no"></span>
         <strong class="lb-title" id="lb-title"></strong>
         <span class="lb-desc" id="lb-desc"></span>
-        <span class="lb-zoom-tip">单击图片可放大 / 缩小 · ← → 切换 · Esc 关闭</span>
+        <span class="lb-zoom-tip">单击图片可放大 / 缩小 · ← → 切换 · Esc 关闭 · Click to zoom · ← → navigate · Esc to close</span>
       </figcaption>
     </figure>
   </div>

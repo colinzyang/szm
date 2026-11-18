@@ -17,6 +17,13 @@
   const FEATURED_TAG = '镇馆之宝';
   const PAGE_SIZE = 8;
 
+  /* 分类标签双语 · Bilingual tag labels */
+  const TAG_EN = {
+    '全部': 'All', '镇馆之宝': 'Masterpiece', '摄影': 'Photography', '人像': 'Portrait',
+    '风景': 'Landscape', '梗图': 'Meme', '二次元': 'Anime', '设计': 'Design', '其他': 'Misc',
+  };
+  const tagLabel = t => TAG_EN[t] ? `${t} ${TAG_EN[t]}` : t;
+
   const featuredExhibits = (() => {
     const tagged = DATA.filter(e => (e.tags || []).includes(FEATURED_TAG));
     return (tagged.length ? tagged : DATA).slice(0, 2);
@@ -96,7 +103,7 @@
     card.tabIndex = 0;
     card.setAttribute('role', 'button');
     card.dataset.id = ex.id;
-    card.setAttribute('aria-label', `鉴赏作品 ${ex.id} ${ex.title}`);
+    card.setAttribute('aria-label', `鉴赏作品 Appreciate · ${ex.id} ${ex.title}`);
     card.dataset.tags = (ex.tags || []).join('|');
 
     const frame = document.createElement('div');
@@ -131,7 +138,7 @@
     (ex.tags || []).forEach(t => {
       const b = document.createElement('span');
       b.className = 'tag-badge';
-      b.textContent = t;
+      b.textContent = tagLabel(t);
       tags.appendChild(b);
     });
     const desc = document.createElement('p');
@@ -156,7 +163,9 @@
   $('#stat-exhibits').dataset.count = DATA.length;
   $('#stat-curators').dataset.count = authors.size;
   if (countLine) {
-    countLine.textContent = `当前 ${DATA.length} 件馆藏 · ${authors.size} 位策展人 · 永久开放投稿`;
+    const enExhibits = `${DATA.length} exhibit${DATA.length === 1 ? '' : 's'}`;
+    const enCurators = `${authors.size} curator${authors.size === 1 ? '' : 's'}`;
+    countLine.innerHTML = `当前 ${DATA.length} 件馆藏 · ${authors.size} 位策展人 · 永久开放投稿<span class="en">${enExhibits} · ${enCurators} · submissions always open</span>`;
   }
 
   /* ---------- 筛选 / 搜索 / 分页 ---------- */
@@ -168,7 +177,7 @@
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'chip' + (i === 0 ? ' active' : '');
-    chip.textContent = t;
+    chip.textContent = tagLabel(t);
     chip.addEventListener('click', () => {
       curTag = t;
       $$('.chip', tagChipsBox).forEach(c => c.classList.toggle('active', c === chip));
@@ -214,7 +223,7 @@
     emptyBox.hidden = total !== 0;
     const remaining = communityMatched - (searching ? 0 : page * PAGE_SIZE);
     loadMoreBtn.hidden = remaining <= 0;
-    loadMoreBtn.textContent = remaining > 0 ? `展开更多馆藏（还有 ${remaining} 件）` : '展开更多馆藏';
+    loadMoreBtn.textContent = remaining > 0 ? `展开更多馆藏 · Load more（${remaining}）` : '展开更多馆藏 · Load more';
   };
   loadMoreBtn.addEventListener('click', () => { page++; applyFilter(); });
   applyFilter();
@@ -381,7 +390,7 @@
     if (ki === KONAMI.length) {
       ki = 0;
       const on = document.body.classList.toggle('party');
-      showToast(on ? '🎉 全息传奇模式已开启！再按一次关闭' : '🎊 全息传奇模式已关闭，传奇回归常态');
+      showToast(on ? '全息传奇模式已开启 · Hologram Legend Mode ON · 再按一次关闭 Press again to exit' : '全息传奇模式已关闭 · Hologram Legend Mode OFF');
       if (on) boom(innerWidth / 2, innerHeight / 2);
     }
   });
