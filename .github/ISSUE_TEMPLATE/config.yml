@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 论坛 / Free Talk
+    url: https://github.com/colinzyang/szm#-楼层区--free-talk
+    about: README 就是论坛！按格式在「楼层区」追加一楼即可回帖
+  - name: 🏛 线上美术馆
+    url: https://colinzyang.github.io/szm/
+    about: 馆藏实况，免费参观，永不闭馆

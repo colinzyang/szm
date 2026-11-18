@@ -1,0 +1,108 @@
+name: 收图上架 · Exhibit Pipeline
+
+# 社区投稿管线：Issue 打上「上架」标签 → 自动收图、挂画、部署
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: exhibit-pipeline
+  cancel-in-progress: false
+
+jobs:
+  shelve:
+    if: github.event.label.name == '上架'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 确保标签存在
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh label create "投稿" --color 1d76db --description "等待审核的投稿" 2>/dev/null || true
+          gh label create "上架" --color d4af37 --description "馆长已盖章，自动进馆" 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 收图并写入馆藏数据
+        id: add
+        run: |
+          OUT=$(node scripts/add-exhibit.mjs)
+          echo "$OUT"
+          echo "$OUT" | grep -E '^(skipped|id|file|title|author|tag)=' >> "$GITHUB_OUTPUT" || true
+
+      - name: 压缩大图（尽力而为）
+        if: steps.add.outputs.skipped != 'true'
+        env:
+          IMG_FILE: ${{ steps.add.outputs.file }}
+        run: |
+          if [ -f "$IMG_FILE" ] && [ "${IMG_FILE##*.}" != "gif" ]; then
+            if command -v magick >/dev/null; then IM="magick"
+            elif command -v convert >/dev/null; then IM="convert"
+            else IM=""; fi
+            if [ -n "$IM" ]; then
+              cp "$IMG_FILE" /tmp/bak.img
+              $IM /tmp/bak.img -resize '1400x1400>' "$IMG_FILE" || cp /tmp/bak.img "$IMG_FILE"
+              echo "resized with $IM"
+            fi
+          fi
+
+      - name: 提交并推送
+        if: steps.add.outputs.skipped != 'true'
+        env:
+          EX_ID: ${{ steps.add.outputs.id }}
+          EX_TITLE: ${{ steps.add.outputs.title }}
+          EX_AUTHOR: ${{ steps.add.outputs.author }}
+        run: |
+          git config user.name "szm-curator-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add static/gallery-data.js static/community/
+          git commit -m "🖼 上架 EXHIBIT ${EX_ID}（@${EX_AUTHOR}）"
+          git push
+
+      - name: 评论并关闭 Issue
+        if: steps.add.outputs.skipped != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          EX_ID: ${{ steps.add.outputs.id }}
+          EX_TAG: ${{ steps.add.outputs.tag }}
+          EX_AUTHOR: ${{ steps.add.outputs.author }}
+        run: |
+          gh issue comment "$NUMBER" --repo "$REPO" --body \
+            "🎉 作品已上架！展位 **EXHIBIT ${EX_ID}** · 分类「${EX_TAG}」
+            线上鉴赏 → https://colinzyang.github.io/szm/ （推送后约 1 分钟生效）
+            感谢 @${EX_AUTHOR} 为社区馆藏添砖加瓦 🧱"
+          gh issue close "$NUMBER" --repo "$REPO"
+
+      - name: 重复上架提醒
+        if: steps.add.outputs.skipped == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          EX_ID: ${{ steps.add.outputs.id }}
+        run: |
+          gh issue comment "$NUMBER" --repo "$REPO" --body \
+            "ℹ️ 这件作品已在馆中（EXHIBIT ${EX_ID}），无需重复上架。"
+          gh issue close "$NUMBER" --repo "$REPO"
+
+      - name: 收图失败提醒
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$NUMBER" --repo "$REPO" --body \
+            "❌ 收图失败：请检查图片是否为 jpg/png/webp/gif、链接可访问、体积 ≤15MB。
+            修正后重新打上「上架」标签即可重试。"

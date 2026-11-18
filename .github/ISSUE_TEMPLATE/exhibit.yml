@@ -1,0 +1,61 @@
+name: 🎨 投稿上墙 / Submit an Exhibit
+description: 把你的作品挂进 SZM 美术馆，馆长盖章后自动上架
+title: "🎨 [作品标题]"
+labels: ["投稿"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢投稿！填好下面的表，等馆长给 Issue 打上「**上架**」标签，
+        机器人就会自动收图、挂画、重新开馆（约 1 分钟）。
+        作品要求见 [论坛公约](https://github.com/colinzyang/szm#-论坛公约)。
+
+  - type: textarea
+    id: image
+    attributes:
+      label: 🖼 作品图片
+      description: 直接把图片拖进输入框，或粘贴图片直链（jpg/png/webp/gif，≤15MB）
+      placeholder: "拖进来 / 粘贴 ![image](https://...)"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: 🏷 作品标题
+      description: 将出现在展签上（40 字以内）
+      placeholder: "例：凌晨三点的实验室"
+    validations:
+      required: true
+
+  - type: textarea
+    id: desc
+    attributes:
+      label: 📖 作品介绍
+      description: 讲讲这件作品的来历（200 字以内，可留空）
+      placeholder: "例：那天服务器第 8 次崩了，我拍下了此景。"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 🔖 作品分类
+      options:
+        - 摄影
+        - 人像
+        - 风景
+        - 梗图
+        - 二次元
+        - 设计
+        - 其他
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ 投稿承诺
+      options:
+        - label: 我拥有该图片的版权 / 已获得授权，并同意它在本馆（含 GitHub Pages）公开展出
+          required: true

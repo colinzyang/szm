@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>桑子铭 · SZM | 世界上最牛的美术馆 The Legendary Gallery</title>
+  <meta name="description" content="SZM 美术馆 · The Museum of SZM —— 一个人，就是一座美术馆。馆藏两件传世孤品，常年免费开放。" />
+  <meta name="theme-color" content="#0b0a08" />
+  <meta property="og:title" content="SZM 美术馆 · The Museum of SZM" />
+  <meta property="og:description" content="一个人，就是一座美术馆。One man. One museum." />
+  <meta property="og:image" content="static/szm.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@500;700;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+
+  <!-- 预加载 -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pre-word"><span>S</span><span>Z</span><span>M</span></div>
+    <div class="pre-bar"><i></i></div>
+    <div class="pre-tip">正在布展… Preparing the exhibition</div>
+  </div>
+
+  <!-- 进度条 / 光标 / 颗粒 -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- 导航 -->
+  <nav id="nav">
+    <a class="brand" href="#top">🏛 SZM<em>·</em>MUSEUM</a>
+    <div class="nav-links">
+      <a href="#collection">馆藏</a>
+      <a href="#community">社区馆</a>
+      <a href="#stats">数据</a>
+      <a href="#quotes">留言墙</a>
+      <a href="#fanzone">应援</a>
+    </div>
+    <a class="star-btn" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener">⭐ Star</a>
+  </nav>
+
+  <!-- 英雄区 -->
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow reveal">EST. 2026 · 终身荣誉馆藏 · PERMANENT COLLECTION</p>
+      <h1 class="hero-title"><span>桑</span><span>子</span><span>铭</span></h1>
+      <p class="hero-sub reveal" style="--d:.15s">一个人，就是一座美术馆。<br/><span class="en">One man. One museum. Zero rivals.</span></p>
+      <div class="hero-chips reveal" style="--d:.3s">
+        <span>🧬 Bioinformatics</span>
+        <span>🏅 Team Member</span>
+        <span>🎓 XJTLU-China</span>
+        <span>🌐 社区共馆</span>
+      </div>
+    </div>
+    <div class="hero-seal" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs><path id="cir" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <text><textPath href="#cir">SZM MUSEUM · 桑子铭 · EST. 2026 · WORLD CLASS ·</textPath></text>
+      </svg>
+    </div>
+    <a class="scroll-hint" href="#collection" aria-label="向下滚动">▾</a>
+  </header>
+
+  <!-- 跑马灯 -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <span>桑子铭 ✦ ZIMING SANG ✦ BIOINFORMATICS ✦ TEAM MEMBER ✦ XJTLU-CHINA ✦ 传奇在馆 ✦ THE LEGEND IS IN ✦ 欢迎鉴赏 ✦ FREE ADMISSION ✦ 🎨 社区投稿开放中 SUBMIT YOURS ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- 馆藏 -->
+  <main>
+    <section class="section" id="collection">
+      <div class="ghost-num" aria-hidden="true">01</div>
+      <header class="section-head reveal">
+        <p class="kicker">THE COLLECTION</p>
+        <h2>馆藏精选</h2>
+        <p class="lede">每一件都是孤品，每一帧都是历史。<br/>两件镇馆之宝，常年展出，永不外借。</p>
+      </header>
+
+      <div class="exhibits" id="featured-grid"><!-- 镇馆之宝由 gallery-data.js 动态渲染 --></div>
+      <p class="hint reveal">💡 点击作品 · 进入全屏鉴赏模式</p>
+    </section>
+
+    <!-- 社区馆藏 -->
+    <section class="section section--community" id="community">
+      <div class="ghost-num" aria-hidden="true">02</div>
+      <header class="section-head reveal">
+        <p class="kicker">COMMUNITY WING</p>
+        <h2>社区馆藏</h2>
+        <p class="lede">这面墙属于每一个你。<br/>投稿上墙，下一件镇馆之宝就是你的。</p>
+        <p class="count-line" id="gallery-count"></p>
+      </header>
+
+      <div class="community-toolbar reveal">
+        <label class="search-box">
+          <span aria-hidden="true">🔍</span>
+          <input type="search" id="gallery-search" placeholder="搜索作品 / 策展人 / 关键词…" aria-label="搜索馆藏" />
+        </label>
+        <div class="tag-chips" id="tag-chips" role="group" aria-label="按分类筛选"></div>
+      </div>
+
+      <div class="community-grid" id="community-grid"><!-- 社区展品动态渲染 --></div>
+
+      <div class="community-empty" id="gallery-empty" hidden>
+        <p>🔍 没找到这件孤品。</p>
+        <p>要不……<a href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener">你自己投稿一件</a>？</p>
+      </div>
+
+      <div class="community-actions reveal">
+        <button class="btn btn-ghost" type="button" id="load-more" hidden>展开更多馆藏</button>
+        <div class="cta-buttons">
+          <a class="btn btn-gold" href="https://github.com/colinzyang/szm/issues/new?template=exhibit.yml" target="_blank" rel="noopener">🎨 我要投稿上墙</a>
+          <a class="btn btn-ghost" href="https://github.com/colinzyang/szm#floors" target="_blank" rel="noopener">💬 去 README 论坛灌水</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 数据 -->
+    <section class="section section--stats" id="stats">
+      <div class="ghost-num" aria-hidden="true">03</div>
+      <header class="section-head reveal">
+        <p class="kicker">BY THE NUMBERS</p>
+        <h2>数据说话</h2>
+        <p class="lede">本馆数据实时统计自馆藏档案，随社区生长。</p>
+      </header>
+      <div class="stats-grid">
+        <div class="stat reveal"><span class="stat-num" id="stat-curators" data-count="1">0</span><span class="stat-label">位策展人</span></div>
+        <div class="stat reveal" style="--d:.1s"><span class="stat-num" id="stat-exhibits" data-count="2">0</span><span class="stat-label">件在馆馆藏</span></div>
+        <div class="stat reveal" style="--d:.2s"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">气场纯度</span></div>
+        <div class="stat reveal" style="--d:.3s"><span class="stat-num stat-infinity">∞</span><span class="stat-label">粉丝的爱</span></div>
+      </div>
+    </section>
+
+    <!-- 留言墙 -->
+    <section class="section" id="quotes">
+      <div class="ghost-num" aria-hidden="true">04</div>
+      <header class="section-head reveal">
+        <p class="kicker">WALL OF FAME</p>
+        <h2>粉丝留言墙</h2>
+        <p class="lede">来自世界各地（主要是实验室和宿舍）的真实声音。</p>
+      </header>
+      <div class="quotes-grid">
+        <blockquote class="quote reveal">“他一出场，连风都停下来看他。”<footer>— 一位不愿透露姓名的室友</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.1s">“自从他来了，实验室的服务器再没宕过机。”<footer>— 生信部同事</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.2s">“见过他的人分两种：粉丝，和即将成为粉丝的人。”<footer>— 馆长</footer></blockquote>
+        <blockquote class="quote reveal" style="--d:.3s">“XJTLU 之光，Bioinformatics 之魂。”<footer>— 匿名粉丝（申明了四次）</footer></blockquote>
+      </div>
+    </section>
+
+    <!-- 应援 -->
+    <section class="section section--cta" id="fanzone">
+      <div class="ghost-num" aria-hidden="true">05</div>
+      <header class="section-head reveal">
+        <p class="kicker">JOIN THE CULT— CLUB</p>
+        <h2>爱他，就为他点一颗 Star</h2>
+        <p class="lede">本馆不收门票，只收星星。⭐</p>
+      </header>
+      <div class="cta-buttons reveal">
+        <a class="btn btn-gold" href="https://github.com/colinzyang/szm" target="_blank" rel="noopener" data-confetti>⭐ 去 GitHub 点 Star</a>
+        <button class="btn btn-ghost" type="button" data-confetti>🎊 替他放个烟花</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year">2026</span> SZM 美术馆 · The Museum of SZM · 用爱发电 ⚡</p>
+    <p class="foot-small">README 即论坛 · 楼层区见 &nbsp;·&nbsp; 提示：试试 ↑↑↓↓←→←→BA</p>
+  </footer>
+
+  <!-- 灯箱 -->
+  <div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="全屏鉴赏">
+    <button class="lb-close" aria-label="关闭">✕</button>
+    <button class="lb-nav lb-prev" aria-label="上一件">‹</button>
+    <button class="lb-nav lb-next" aria-label="下一件">›</button>
+    <figure class="lb-figure">
+      <img id="lb-img" src="" alt="" />
+      <figcaption>
+        <span class="lb-no" id="lb-no"></span>
+        <strong class="lb-title" id="lb-title"></strong>
+        <span class="lb-desc" id="lb-desc"></span>
+        <span class="lb-zoom-tip">单击图片可放大 / 缩小 · ← → 切换 · Esc 关闭</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="static/gallery-data.js"></script>
+  <script src="static/main.js" defer></script>
+</body>
+</html>
