@@ -52,7 +52,7 @@
 | 楼层 | 楼主 | 日期 | 内容 |
 |---:|---|---|---|
 | 1F | [@colinzyang](https://github.com/colinzyang) | 2026-11-17 | 开馆大吉！美术馆正式挂牌，欢迎大家来灌水 |
-| 2F | *（下一楼就是你的）* | | |
+| 2F | [@Tsutayaaa](https://github.com/Tsutayaaa) | 2026-11-20 | 二楼打卡！金牌已归乡，难绷瞬间也已投稿。 |
 
 <a id="forum-rules"></a>
 
